@@ -1,6 +1,5 @@
 from decouple import config
 from csv import DictReader
-import time
 import psycopg2
 
 postgres_credentials = {
