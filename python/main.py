@@ -19,11 +19,13 @@ with open(filename, "r") as file:
             database=postgres_credentials["database_name"],
             user=postgres_credentials["user"],
             password=postgres_credentials["password"],
+            port="5432",
         )
         mycursor = conn.cursor()
         print("Conectado com sucesso!")
     except Exception as e:
         print(f"Erro: {e}")
+
     for dicio in dict_objs:
         insert_query = f"""
             INSERT INTO fast_food_nutrition_menu("Company", "Item", "Calories", "CaloriesFromFat", "TotalFat(g)", "SaturatedFat(g)", "TransFat(g)", "Cholesterol(mg)", "Sodium(mg)", "Carbs(g)", "Fiber(g)", "Sugars(g)", "Protein(g)", "WeightWatchersPnts") 
@@ -35,4 +37,5 @@ with open(filename, "r") as file:
             print(f"Valor inserido com sucesso!")        
         except Exception as e:
             print(f"Erro: {e}")
+
 conn.close()
